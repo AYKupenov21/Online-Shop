@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+  <h2>Регистрация</h2>
+  <form method="post">
+    <label>Име: <input type="text" name="name"></label><br>
+    <label>Email: <input type="email" name="email" required></label><br>
+    <label>Парола: <input type="password" name="password" required></label><br>
+    <!-- Само за тест: можете да изберете role admin/user; в реален проект това не е публично -->
+    <label>Роля: <select name="role">
+      <option value="user">user</option>
+      <option value="admin">admin</option>
+    </select></label><br>
+    <button type="submit">Регистрация</button>
+  </form>
+{% endblock %}

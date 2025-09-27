@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Catalog</h2>
+
+  <form method="get" class="filters">
+    <input type="text" name="q" placeholder="Search name/description" value="{{ filters.q }}">
+    <input type="text" name="color" placeholder="Color" value="{{ filters.color }}">
+    <input type="text" name="size" placeholder="Size" value="{{ filters.size }}">
+    <input type="number" step="0.01" name="min_price" placeholder="Min price" value="{{ filters.min_price or '' }}">
+    <input type="number" step="0.01" name="max_price" placeholder="Max price" value="{{ filters.max_price or '' }}">
+    <label><input type="checkbox" name="in_stock" {% if filters.in_stock %}checked{% endif %}> In stock only</label>
+    <button type="submit">Filter</button>
+  </form>
+
+  <div class="product-grid">
+    {% for p in products %}
+      <div class="product-card">
+        <div class="product-image">
+          <img src="{{ url_for('static', filename='placeholder.png') }}" alt="{{ p.name }}">
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">{{ p.name }}</h3>
+          <p class="product-desc">{{ p.description }}</p>
+          <p class="product-meta">Color: {{ p.color }} | Sizes: {{ p.sizes|join(", ") }}</p>
+          <p class="product-price">
+            <span class="current-price">{{ "%.2f"|format(p.price) }} BGN</span>
+            {% if p.old_price %}
+              <span class="old-price">{{ "%.2f"|format(p.old_price) }} BGN</span>
+            {% endif %}
+          </p>
+          <form action="{{ url_for('cart.add_to_cart', product_id=p.id) }}" method="post">
+            <label>Quantity: <input type="number" name="quantity" value="1" min="1"></label>
+            <label>Size:
+              <select name="size" required>
+                {% for s in range(38, 46) %}
+                  <option value="{{ s }}">{{ s }}</option>
+                {% endfor %}
+              </select>
+            </label>
+            <button type="submit" class="btn-add">Add to cart</button>
+          </form>
+        </div>
+      </div>
+    {% else %}
+      <p>No products available.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

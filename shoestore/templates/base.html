@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ShoeStore</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-left">
+      <h1><a href="{{ url_for('index') }}">ShoeStore</a></h1>
+    </div>
+    <nav class="nav-right">
+      <a href="{{ url_for('catalog.view_catalog') }}">Catalog</a>
+      <a href="{{ url_for('cart.view_cart') }}">Cart</a>
+      {% if session.get('user') %}
+        <span>Hello, {{ session.user.name }} ({{ session.user.role }})</span>
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+        {% if session.user.role == 'admin' %}
+          <a href="{{ url_for('admin.admin_index') }}">Admin</a>
+        {% endif %}
+      {% else %}
+        <a href="{{ url_for('auth.login') }}">Login</a>
+        <a href="{{ url_for('auth.register') }}">Register</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for m in messages %}
+            <li>{{ m }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <p>Demo shop — data is stored in memory and will reset on restart.</p>
+    <p>&copy; 2025 ShoeStore</p>
+  </footer>
+</body>
+</html>
