@@ -6,9 +6,8 @@ from controllers.admin_controller import admin_bp
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = "dev-secret-key"  # за демонстрация
+    app.secret_key = "dev-secret-key"
 
-    # Регистрирай blueprints
     app.register_blueprint(auth_bp)
     app.register_blueprint(catalog_bp)
     app.register_blueprint(cart_bp)

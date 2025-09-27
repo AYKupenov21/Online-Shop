@@ -16,8 +16,9 @@
     {% for p in products %}
       <div class="product-card">
         <div class="product-image">
-          <img src="{{ url_for('static', filename='placeholder.png') }}" alt="{{ p.name }}">
+          <img src="{{ url_for('static', filename=p.image) }}" alt="{{ p.name }}">
         </div>
+
         <div class="product-info">
           <h3 class="product-name">{{ p.name }}</h3>
           <p class="product-desc">{{ p.description }}</p>

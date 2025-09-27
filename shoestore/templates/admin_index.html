@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-  <h2>Admin - CRUD Продукти</h2>
-  <p><a href="{{ url_for('admin.create_product') }}">Създай нов продукт</a></p>
+  <h2>Admin - CRUD Products</h2>
+  <p><a href="{{ url_for('admin.create_product') }}">Create new product</a></p>
   <ul>
     {% for p in products %}
       <li>
-        {{ p.name }} | Цена: {{ p.price }} | Наличност: {{ p.stock }}
-        <a href="{{ url_for('admin.edit_product', product_id=p.id) }}">[Редактирай]</a>
+        {{ p.name }} | Price: {{ p.price }} | Availability: {{ p.stock }}
+        <a href="{{ url_for('admin.edit_product', product_id=p.id) }}">[Edit]</a>
         <form style="display:inline" method="post" action="{{ url_for('admin.delete_product', product_id=p.id) }}">
-          <button type="submit">Изтрий</button>
+          <button type="submit">Delete</button>
         </form>
       </li>
     {% endfor %}

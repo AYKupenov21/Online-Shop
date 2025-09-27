@@ -1,5 +1,3 @@
-# carts: dict mapping user_email -> list of items
-# item: {product_id, quantity, size}
 from services.catalog_service import CatalogService
 
 _CARTS = {}
@@ -12,9 +10,9 @@ class CartService:
     def add_item(self, user_email, product_id, qty=1, size=None):
         p = catalog.get(product_id)
         if not p:
-            return False, "Продуктът не е намерен."
+            return False, "The product does not exist."
         if p["stock"] < qty:
-            return False, "Няма достатъчна наличност."
+            return False, "There is not enough stock."
         item = {"product_id": product_id, "quantity": qty, "size": size, "product": p}
         _CARTS.setdefault(user_email, []).append(item)
         return True, "OK"

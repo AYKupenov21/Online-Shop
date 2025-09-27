@@ -4,7 +4,6 @@ _PRODUCTS = []
 
 class CatalogService:
     def __init__(self):
-        # Инициализация с 3 продукта ако празно
         if not _PRODUCTS:
             self.create_product({
                 "name": "Sport Runner",
@@ -12,7 +11,8 @@ class CatalogService:
                 "color": "черен",
                 "sizes": ["40", "41", "42"],
                 "price": 120.0,
-                "stock": 10
+                "stock": 10,
+                "image": "images/RunningShoes.jpg"
             })
             self.create_product({
                 "name": "Classic Leather",
@@ -20,7 +20,8 @@ class CatalogService:
                 "color": "кафяв",
                 "sizes": ["39", "40", "41"],
                 "price": 200.0,
-                "stock": 5
+                "stock": 5,
+                "image": "images/ClassicLeatherShoes.jpg"
             })
             self.create_product({
                 "name": "Summer Sandal",
@@ -28,7 +29,8 @@ class CatalogService:
                 "color": "бял",
                 "sizes": ["38", "39", "40"],
                 "price": 60.0,
-                "stock": 20
+                "stock": 20,
+                "image": "images/Sandals.jpg"
             })
 
     def create_product(self, data):
@@ -40,7 +42,8 @@ class CatalogService:
             "color": data.get("color"),
             "sizes": data.get("sizes", []),
             "price": float(data.get("price", 0)),
-            "stock": int(data.get("stock", 0))
+            "stock": int(data.get("stock", 0)),
+            "image": data.get("image", "images/placeholder.png")
         }
         _PRODUCTS.append(p)
         return p
@@ -92,8 +95,8 @@ class CatalogService:
     def reduce_stock(self, product_id, qty):
         p = self.get(product_id)
         if not p:
-            return False, "Продуктът не съществува."
+            return False, "The product does not exist."
         if p["stock"] < qty:
-            return False, "Няма достатъчна наличност."
+            return False, "There is not enough stock."
         p["stock"] -= qty
         return True, "OK"

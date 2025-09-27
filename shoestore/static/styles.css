@@ -27,12 +27,12 @@ body {
 .navbar a:hover { text-decoration: underline; }
 .navbar span { margin-right: 10px; }
 
-/* MAIN CONTENT */
+/* MAIN */
 main {
   flex: 1;
   padding: 20px;
   box-sizing: border-box;
-  padding-bottom: 70px; /* space so footer doesn't overlap */
+  padding-bottom: 70px;
 }
 
 /* CONTAINER for filters + products */

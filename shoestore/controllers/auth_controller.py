@@ -13,7 +13,7 @@ def register():
         role = request.form.get("role") or "user"
         ok, msg = auth_service.register_user(email, password, name, role)
         if ok:
-            flash("Регистрацията е успешна. Потвърждение изпратено (в конзолата).")
+            flash("The registration was successful.")
             return redirect(url_for("auth.login"))
         else:
             flash(msg)
@@ -27,7 +27,7 @@ def login():
         ok, user_or_msg = auth_service.authenticate(email, password)
         if ok:
             session["user"] = {"email": user_or_msg["email"], "name": user_or_msg["name"], "role": user_or_msg["role"]}
-            flash("Успешен вход.")
+            flash("Successfully logged in.")
             return redirect(url_for("catalog.view_catalog"))
         else:
             flash(user_or_msg)
@@ -36,5 +36,5 @@ def login():
 @auth_bp.route("/logout")
 def logout():
     session.pop("user", None)
-    flash("Излязохте от профила.")
+    flash("You have been logged out.")
     return redirect(url_for("index"))

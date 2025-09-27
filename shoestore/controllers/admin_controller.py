@@ -11,7 +11,7 @@ def is_admin():
 @admin_bp.route("/")
 def admin_index():
     if not is_admin():
-        flash("Достъпът е ограничен до администратори.")
+        flash("You need to be an admin to access this page.")
         return redirect(url_for("auth.login"))
     products = catalog_service.get_all()
     return render_template("admin_index.html", products=products)
@@ -19,7 +19,7 @@ def admin_index():
 @admin_bp.route("/create", methods=["GET", "POST"])
 def create_product():
     if not is_admin():
-        flash("Достъпът е ограничен.")
+        flash("You don't have permission to create products.")
         return redirect(url_for("auth.login"))
     if request.method == "POST":
         data = {
@@ -31,18 +31,18 @@ def create_product():
             "stock": int(request.form.get("stock") or 0)
         }
         catalog_service.create_product(data)
-        flash("Продуктът е създаден.")
+        flash("The product has been created.")
         return redirect(url_for("admin.admin_index"))
     return render_template("admin_create.html")
 
 @admin_bp.route("/edit/<product_id>", methods=["GET", "POST"])
 def edit_product(product_id):
     if not is_admin():
-        flash("Достъпът е ограничен.")
+        flash("You dont have permission to edit this product.")
         return redirect(url_for("auth.login"))
     product = catalog_service.get(product_id)
     if not product:
-        flash("Продуктът не е намерен.")
+        flash("The product does not exist.")
         return redirect(url_for("admin.admin_index"))
     if request.method == "POST":
         updates = {
@@ -54,15 +54,15 @@ def edit_product(product_id):
             "stock": int(request.form.get("stock") or 0)
         }
         catalog_service.update_product(product_id, updates)
-        flash("Продуктът е обновен.")
+        flash("The product has been updated.")
         return redirect(url_for("admin.admin_index"))
     return render_template("admin_edit.html", product=product)
 
 @admin_bp.route("/delete/<product_id>", methods=["POST"])
 def delete_product(product_id):
     if not is_admin():
-        flash("Достъпът е ограничен.")
+        flash("You don't have permission.")
         return redirect(url_for("auth.login"))
     catalog_service.delete_product(product_id)
-    flash("Продуктът е изтрит.")
+    flash("The product has been deleted.")
     return redirect(url_for("admin.admin_index"))
