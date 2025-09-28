@@ -2,13 +2,13 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>ShoeStore</title>
+  <title>ShoeShop</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
   <header class="navbar">
     <div class="nav-left">
-      <h1><a href="{{ url_for('index') }}">ShoeStore</a></h1>
+      <h1><a href="{{ url_for('index') }}">ShoeShop</a></h1>
     </div>
     <nav class="nav-right">
       <a href="{{ url_for('catalog.view_catalog') }}">Catalog</a>
@@ -40,8 +40,7 @@
   </main>
 
   <footer class="footer">
-    <p>Demo shop — data is stored in memory and will reset on restart.</p>
-    <p>&copy; 2025 ShoeStore</p>
+    <p>We are not selling nike here, only top brands!</p>
   </footer>
 </body>
 </html>
