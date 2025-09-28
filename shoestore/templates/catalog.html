@@ -3,12 +3,25 @@
   <h2>Catalog</h2>
 
   <form method="get" class="filters">
-    <input type="text" name="q" placeholder="Search name/description" value="{{ filters.q }}">
-    <input type="text" name="color" placeholder="Color" value="{{ filters.color }}">
-    <input type="text" name="size" placeholder="Size" value="{{ filters.size }}">
-    <input type="number" step="0.01" name="min_price" placeholder="Min price" value="{{ filters.min_price or '' }}">
-    <input type="number" step="0.01" name="max_price" placeholder="Max price" value="{{ filters.max_price or '' }}">
-    <label><input type="checkbox" name="in_stock" {% if filters.in_stock %}checked{% endif %}> In stock only</label>
+    <input type="text" name="q" placeholder="Search name/description" value="{{ filters.q or '' }}">
+
+    <select name="color">
+      <option value="">-- Any color --</option>
+      <option value="black" {% if filters.color == "black" %}selected{% endif %}>Black</option>
+      <option value="white" {% if filters.color == "white" %}selected{% endif %}>White</option>
+      <option value="red" {% if filters.color == "red" %}selected{% endif %}>Red</option>
+      <option value="green" {% if filters.color == "green" %}selected{% endif %}>Green</option>
+      <option value="blue" {% if filters.color == "blue" %}selected{% endif %}>Blue</option>
+      <option value="yellow" {% if filters.color == "yellow" %}selected{% endif %}>Yellow</option>
+      <option value="brown" {% if filters.color == "brown" %}selected{% endif %}>Brown</option>
+    </select>
+
+    <input type="text" name="size" placeholder="Size" value="{{ filters.size or '' }}">
+    <input type="number" step="0.01" name="min_price" placeholder="Min price" value="{{ filters.min_price if filters.min_price is not none else '' }}">
+    <input type="number" step="0.01" name="max_price" placeholder="Max price" value="{{ filters.max_price if filters.max_price is not none else '' }}">
+    <label>
+      <input type="checkbox" name="in_stock" value="1" {% if filters.in_stock %}checked{% endif %}> In stock only
+    </label>
     <button type="submit">Filter</button>
   </form>
 
@@ -39,7 +52,6 @@
                 {% endfor %}
               </select>
             </label>
-
             <button type="submit" class="btn-add">Add to cart</button>
           </form>
         </div>

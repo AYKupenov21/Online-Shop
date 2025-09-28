@@ -14,12 +14,12 @@ def view_catalog():
     in_stock = request.args.get("in_stock")  # "on" or None
 
     filters = {
-        "q": q,
-        "color": color,
-        "min_price": float(min_price) if min_price else None,
-        "max_price": float(max_price) if max_price else None,
-        "size": size,
-        "in_stock": True if in_stock == "on" else None
+        "q": request.args.get("q", "").strip(),
+        "color": request.args.get("color", "").strip(),
+        "size": request.args.get("size", "").strip(),
+        "min_price": float(request.args.get("min_price")) if request.args.get("min_price") else None,
+        "max_price": float(request.args.get("max_price")) if request.args.get("max_price") else None,
+        "in_stock": request.args.get("in_stock") == "1"
     }
     products = catalog_service.search_and_filter(filters)
     return render_template("catalog.html", products=products, filters=filters)

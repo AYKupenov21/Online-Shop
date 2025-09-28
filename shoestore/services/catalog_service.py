@@ -8,7 +8,7 @@ class CatalogService:
             self.create_product({
                 "name": "Sport Runner",
                 "description": "Леки спортни обувки",
-                "color": "черен",
+                "color": "black",
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 120.0,
                 "stock": 10,
@@ -17,7 +17,7 @@ class CatalogService:
             self.create_product({
                 "name": "Classic Leather",
                 "description": "Елегантни кожени обувки",
-                "color": "кафяв",
+                "color": "black",
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 200.0,
                 "stock": 5,
@@ -26,7 +26,7 @@ class CatalogService:
             self.create_product({
                 "name": "Summer Sandal",
                 "description": "Удобни сандали за лятото",
-                "color": "бял",
+                "color": "black",
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 60.0,
                 "stock": 20,
@@ -35,7 +35,7 @@ class CatalogService:
             self.create_product({
                 "name": "Red Sport Runner",
                 "description": "Леки червени спортни обувки",
-                "color": "червен",
+                "color": "red",
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 129.9,
                 "stock": 10,
@@ -44,7 +44,7 @@ class CatalogService:
             self.create_product({
                 "name": "Black Shoes",
                 "description": "Черни обувки",
-                "color": "кафяв",
+                "color": "black",
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 209.0,
                 "stock": 5,
@@ -53,7 +53,7 @@ class CatalogService:
             self.create_product({
                 "name": "White High Shoes",
                 "description": "Бели високи обувки",
-                "color": "бял",
+                "color": "white",
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 61.0,
                 "stock": 20,
@@ -62,7 +62,7 @@ class CatalogService:
             self.create_product({
                 "name": "Interesting Shoes",
                 "description": "Интересни обувки",
-                "color": "черен",
+                "color": "yellow",
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 140.0,
                 "stock": 10,
@@ -71,7 +71,7 @@ class CatalogService:
             self.create_product({
                 "name": "Modern Shoes",
                 "description": "Модерни обувки",
-                "color": "кафяв",
+                "color": "white",
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 270.0,
                 "stock": 5,
@@ -80,7 +80,7 @@ class CatalogService:
             self.create_product({
                 "name": "Nature Shoes",
                 "description": "Природни обувки",
-                "color": "бял",
+                "color": "green",
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 360.0,
                 "stock": 20,
@@ -89,7 +89,7 @@ class CatalogService:
             self.create_product({
                 "name": "Old Money Shoes",
                 "description": "Стари пари обувки",
-                "color": "черен",
+                "color": "brown",
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 150.0,
                 "stock": 10,
@@ -98,25 +98,16 @@ class CatalogService:
             self.create_product({
                 "name": "Orange Shoes",
                 "description": "Оранжеви обувки",
-                "color": "кафяв",
+                "color": "orange",
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 220.0,
                 "stock": 5,
                 "image": "images/OrangeShoes.jpeg"
             })
             self.create_product({
-                "name": "Running Shoes",
-                "description": "Обувки за бягане",
-                "color": "бял",
-                "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
-                "price": 160.0,
-                "stock": 20,
-                "image": "images/RunningShoes.jpg"
-            })
-            self.create_product({
                 "name": "White Shoes",
                 "description": "Бели обувки",
-                "color": "черен",
+                "color": "white",
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 130.0,
                 "stock": 10,
