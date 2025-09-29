@@ -8,7 +8,10 @@
 <body>
   <header class="navbar">
     <div class="nav-left">
-      <h1><a href="{{ url_for('index') }}">ShoeShop</a></h1>
+      <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="ShoeShop Logo" class="logo">
+      </a>
+
     </div>
     <nav class="nav-right">
       <a href="{{ url_for('catalog.view_catalog') }}">Catalog</a>

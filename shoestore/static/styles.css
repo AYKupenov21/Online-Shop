@@ -114,3 +114,9 @@ main {
   justify-content: center;
   box-sizing: border-box;
 }
+/* Navbar logo */
+.nav-left .logo {
+    height: 80px;
+    width: auto;
+    display: block;
+}
