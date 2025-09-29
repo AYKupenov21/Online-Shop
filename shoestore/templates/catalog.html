@@ -7,13 +7,13 @@
 
     <select name="color">
       <option value="">-- Any color --</option>
-      <option value="black" {% if filters.color == "black" %}selected{% endif %}>Black</option>
-      <option value="white" {% if filters.color == "white" %}selected{% endif %}>White</option>
-      <option value="red" {% if filters.color == "red" %}selected{% endif %}>Red</option>
-      <option value="green" {% if filters.color == "green" %}selected{% endif %}>Green</option>
-      <option value="blue" {% if filters.color == "blue" %}selected{% endif %}>Blue</option>
-      <option value="yellow" {% if filters.color == "yellow" %}selected{% endif %}>Yellow</option>
-      <option value="brown" {% if filters.color == "brown" %}selected{% endif %}>Brown</option>
+      <option value="black"> {% if filters.color == "black" %}selected{% endif %}>Black</option>
+      <option value="white"> {% if filters.color == "white" %}selected{% endif %}>White</option>
+      <option value="red"> {% if filters.color == "red" %}selected{% endif %}>Red</option>
+      <option value="green"> {% if filters.color == "green" %}selected{% endif %}>Green</option>
+      <option value="blue"> {% if filters.color == "blue" %}selected{% endif %}>Blue</option>
+      <option value="yellow"> {% if filters.color == "yellow" %}selected{% endif %}>Yellow</option>
+      <option value="brown"> {% if filters.color == "brown" %}selected{% endif %}>Brown</option>
     </select>
 
     <input type="text" name="size" placeholder="Size" value="{{ filters.size or '' }}">

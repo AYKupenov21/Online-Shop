@@ -12,7 +12,7 @@ class CatalogService:
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 120.0,
                 "stock": 10,
-                "image": "images/RunningShoes.jpg"
+                "image": "images/shoe1.jpeg"
             })
             self.create_product({
                 "name": "Classic Leather",
@@ -21,7 +21,7 @@ class CatalogService:
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 200.0,
                 "stock": 5,
-                "image": "images/ClassicLeatherShoes.jpg"
+                "image": "images/shoe2.jpg"
             })
             self.create_product({
                 "name": "Summer Sandal",
@@ -30,7 +30,7 @@ class CatalogService:
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 60.0,
                 "stock": 20,
-                "image": "images/Sandals.jpg"
+                "image": "images/shoe3.jpg"
             })
             self.create_product({
                 "name": "Red Sport Runner",
@@ -39,7 +39,7 @@ class CatalogService:
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 129.9,
                 "stock": 10,
-                "image": "images/RedRunningShoes.jpeg"
+                "image": "images/shoe4.jpeg"
             })
             self.create_product({
                 "name": "Black Shoes",
@@ -48,7 +48,7 @@ class CatalogService:
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 209.0,
                 "stock": 5,
-                "image": "images/BlackShoes.jpg"
+                "image": "images/shoe5.jpeg"
             })
             self.create_product({
                 "name": "White High Shoes",
@@ -57,7 +57,7 @@ class CatalogService:
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 61.0,
                 "stock": 20,
-                "image": "images/HighWhiteShoes.jpg"
+                "image": "images/shoe6.jpg"
             })
             self.create_product({
                 "name": "Interesting Shoes",
@@ -66,7 +66,7 @@ class CatalogService:
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 140.0,
                 "stock": 10,
-                "image": "images/InterestingShoes.jpg"
+                "image": "images/shoe7.jpg"
             })
             self.create_product({
                 "name": "Modern Shoes",
@@ -75,7 +75,7 @@ class CatalogService:
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 270.0,
                 "stock": 5,
-                "image": "images/ModernShoes.jpg"
+                "image": "images/shoe8.jpg"
             })
             self.create_product({
                 "name": "Nature Shoes",
@@ -84,7 +84,7 @@ class CatalogService:
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 360.0,
                 "stock": 20,
-                "image": "images/NatureShoes.jpg"
+                "image": "images/shoe9.jpg"
             })
             self.create_product({
                 "name": "Old Money Shoes",
@@ -93,25 +93,7 @@ class CatalogService:
                 "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
                 "price": 150.0,
                 "stock": 10,
-                "image": "images/OldMoneyShoes.jpg"
-            })
-            self.create_product({
-                "name": "Orange Shoes",
-                "description": "Оранжеви обувки",
-                "color": "orange",
-                "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
-                "price": 220.0,
-                "stock": 5,
-                "image": "images/OrangeShoes.jpeg"
-            })
-            self.create_product({
-                "name": "White Shoes",
-                "description": "Бели обувки",
-                "color": "white",
-                "sizes": ["38","39", "40", "41", "42" , "43", "44", "45"],
-                "price": 130.0,
-                "stock": 10,
-                "image": "images/WhiteHighShoes.jpeg"
+                "image": "images/shoe10.jpeg"
             })
 
 
