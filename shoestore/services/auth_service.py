@@ -24,7 +24,6 @@ class AuthService:
             "role": role
         }
         _USERS.append(user)
-        print(f"[EMAIL SIMULATION] To: {email} | Subject: Welcome | Body: Hello, {name}! Your registration was successful.")
         return True, "OK"
 
     def authenticate(self, email, password):

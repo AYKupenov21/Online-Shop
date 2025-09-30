@@ -14,19 +14,27 @@
 
     </div>
     <nav class="nav-right">
-      <a href="{{ url_for('catalog.view_catalog') }}">Catalog</a>
-      <a href="{{ url_for('cart.view_cart') }}">Cart</a>
+      <a href="{{ url_for('catalog.view_catalog') }}"
+         class="{% if request.endpoint == 'catalog.view_catalog' %}active{% endif %}">Catalog</a>
+
+      <a href="{{ url_for('cart.view_cart') }}"
+         class="{% if request.endpoint == 'cart.view_cart' %}active{% endif %}">Cart</a>
+
       {% if session.get('user') %}
         <span>Hello, {{ session.user.name }} ({{ session.user.role }})</span>
         <a href="{{ url_for('auth.logout') }}">Logout</a>
         {% if session.user.role == 'admin' %}
-          <a href="{{ url_for('admin.admin_index') }}">Admin</a>
+          <a href="{{ url_for('admin.admin_index') }}"
+             class="{% if request.endpoint == 'admin.admin_index' %}active{% endif %}">Admin</a>
         {% endif %}
       {% else %}
-        <a href="{{ url_for('auth.login') }}">Login</a>
-        <a href="{{ url_for('auth.register') }}">Register</a>
+        <a href="{{ url_for('auth.login') }}"
+           class="{% if request.endpoint == 'auth.login' %}active{% endif %}">Login</a>
+        <a href="{{ url_for('auth.register') }}"
+           class="{% if request.endpoint == 'auth.register' %}active{% endif %}">Register</a>
       {% endif %}
     </nav>
+
   </header>
 
   <main>

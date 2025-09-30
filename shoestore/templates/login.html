@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-  <h2>Вход</h2>
-  <form method="post">
-    <label>Email: <input type="email" name="email" required></label><br>
-    <label>Парола: <input type="password" name="password" required></label><br>
-    <button type="submit">Вход</button>
+<div class="auth-container">
+  <h2 class="auth-title">Вход</h2>
+  <form method="post" class="auth-form">
+    <label>Email
+      <input type="email" name="email" placeholder="Въведете email" required>
+    </label>
+    <label>Парола
+      <input type="password" name="password" placeholder="Въведете парола" required>
+    </label>
+    <button type="submit" class="auth-btn">Вход</button>
   </form>
+</div>
 {% endblock %}

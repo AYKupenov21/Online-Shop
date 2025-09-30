@@ -1,17 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
-  <h2>Кошница</h2>
+  <h2 style="text-align: center; margin-bottom: 20px;">Кошница</h2>
+
   {% if items %}
-    <ul>
+    <div style="max-width: 700px; margin: 0 auto;">
+      {% set total = 0 %}
       {% for it in items %}
-        <li>
-          {{ it.product.name }} ({{ it.size or '-' }}) — кол: {{ it.quantity }} — цена за бр: {{ it.product.price }} лв
-          <a href="{{ url_for('cart.remove_from_cart', product_id=it.product_id) }}">[Премахни]</a>
-        </li>
+        {% set item_total = it.product.price * it.quantity %}
+        {% set total = total + item_total %}
+
+        <div style="display: flex; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+          <img src="{{ url_for('static', filename=it.product.image) }}" alt="{{ it.product.name }}" style="width: 80px; height: auto; margin-right: 20px; border-radius: 6px;">
+          <div style="flex-grow: 1;">
+            <h3 style="margin: 0 0 8px 0;">{{ it.product.name }}</h3>
+            <p style="margin: 4px 0;">Размер: {{ it.size or '-' }}</p>
+            <p style="margin: 4px 0;">Количество: {{ it.quantity }}</p>
+            <p style="margin: 4px 0;">Цена за бр: {{ "%.2f"|format(it.product.price) }} лв</p>
+            <p style="margin: 4px 0; font-weight: bold;">Общо за този продукт: {{ "%.2f"|format(item_total) }} лв</p>
+          </div>
+          <a href="{{ url_for('cart.remove_from_cart', product_id=it.product_id) }}" style="color: red; text-decoration: none; margin-left: 10px;">[Премахни]</a>
+        </div>
       {% endfor %}
-    </ul>
-    <p><a href="{{ url_for('cart.checkout') }}">Финализирай поръчка</a></p>
+
+      <div style="text-align: right; margin-top: 20px;">
+        <h3>Обща сума: {{ "%.2f"|format(total) }} лв</h3>
+      </div>
+
+      <div style="text-align: center; margin-top: 30px;">
+        <a href="{{ url_for('cart.checkout') }}"
+           style="display: inline-block; padding: 12px 24px; background-color: grey; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">
+          Финализирай поръчка
+        </a>
+      </div>
+    </div>
   {% else %}
-    <p>Кошницата е празна.</p>
+    <p style="text-align: center;">Кошницата е празна.</p>
   {% endif %}
 {% endblock %}

@@ -1,15 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-  <h2>Регистрация</h2>
-  <form method="post">
-    <label>Име: <input type="text" name="name"></label><br>
-    <label>Email: <input type="email" name="email" required></label><br>
-    <label>Парола: <input type="password" name="password" required></label><br>
-    <!-- Само за тест: можете да изберете role admin/user; в реален проект това не е публично -->
-    <label>Роля: <select name="role">
-      <option value="user">user</option>
-      <option value="admin">admin</option>
-    </select></label><br>
-    <button type="submit">Регистрация</button>
+<div class="auth-container">
+  <h2 class="auth-title">Регистрация</h2>
+  <form method="post" class="auth-form">
+    <label>Име
+      <input type="text" name="name" placeholder="Въведете име">
+    </label>
+    <label>Email
+      <input type="email" name="email" placeholder="Въведете email" required>
+    </label>
+    <label>Парола
+      <input type="password" name="password" placeholder="Въведете парола" required>
+    </label>
+    <label>Роля
+      <select name="role">
+        <option value="user">Потребител</option>
+        <option value="admin">Администратор</option>
+      </select>
+    </label>
+    <button type="submit" class="auth-btn">Регистрация</button>
   </form>
+</div>
 {% endblock %}
