@@ -1,9 +1,18 @@
 import uuid
+from typing import List, Dict, Any, Optional
 
-_PRODUCTS = []
+_PRODUCTS: List[Dict[str, Any]] = []
+
+from services.search import LinearSearch, SearchStrategy
+from services.sort import QuickSortByPrice, SortStrategy
+
 
 class CatalogService:
-    def __init__(self):
+
+    def __init__(self, search_strategy: Optional[SearchStrategy] = None, sort_strategy: Optional[SortStrategy] = None):
+        self.search_strategy = search_strategy or LinearSearch()
+        self.sort_strategy = sort_strategy
+
         if not _PRODUCTS:
             self.create_product({
                 "name": "Sport Runner",
@@ -135,8 +144,7 @@ class CatalogService:
                 "shoe_type": "slides"
             })
 
-
-    def create_product(self, data):
+    def create_product(self, data: Dict[str, Any]) -> Dict[str, Any]:
         pid = str(uuid.uuid4())
         p = {
             "id": pid,
@@ -152,63 +160,45 @@ class CatalogService:
         _PRODUCTS.append(p)
         return p
 
-    def get_all(self):
+    def get_all(self) -> List[Dict[str, Any]]:
         return list(_PRODUCTS)
 
-    def get(self, product_id):
+    def get(self, product_id: str) -> Optional[Dict[str, Any]]:
         for p in _PRODUCTS:
             if p["id"] == product_id:
                 return p
         return None
 
-    def update_product(self, product_id, updates):
+    def update_product(self, product_id: str, updates: Dict[str, Any]) -> bool:
         p = self.get(product_id)
         if not p:
             return False
+
         p.update(updates)
         return True
 
-    def delete_product(self, product_id):
+    def delete_product(self, product_id: str) -> bool:
         global _PRODUCTS
         _PRODUCTS = [p for p in _PRODUCTS if p["id"] != product_id]
         return True
 
-    def search_and_filter(self, filters):
-        results = _PRODUCTS
+    def search_and_filter(self, filters: Dict[str, Any]) -> List[Dict[str, Any]]:
+
+
+
+        base = list(_PRODUCTS)
+
 
         q = filters.get("q")
-        color = filters.get("color")
-        shoe_type = filters.get("shoe_type")
-        size = filters.get("size")
-        min_price = filters.get("min_price")
-        max_price = filters.get("max_price")
-        in_stock = filters.get("in_stock")
+        results = self.search_strategy.search(base, q, filters)
 
-        if q:
-            results = [p for p in results if q.lower() in (p.get("name") or "").lower()
-                       or q.lower() in (p.get("description") or "").lower()]
 
-        if color:
-            results = [p for p in results if color.lower() in (p.get("color") or "").lower()]
-
-        if shoe_type:
-            results = [p for p in results if (p.get("shoe_type") or "").lower() == shoe_type.lower()]
-
-        if size:
-            results = [p for p in results if size in [str(s) for s in (p.get("sizes") or [])]]
-
-        if min_price is not None:
-            results = [p for p in results if float(p.get("price") or 0) >= min_price]
-
-        if max_price is not None:
-            results = [p for p in results if float(p.get("price") or 0) <= max_price]
-
-        if in_stock:
-            results = [p for p in results if p.get("stock", 0) > 0]
+        if self.sort_strategy:
+            results = self.sort_strategy.sort(results)
 
         return results
 
-    def reduce_stock(self, product_id, qty):
+    def reduce_stock(self, product_id: str, qty: int):
         p = self.get(product_id)
         if not p:
             return False, "The product does not exist."
@@ -216,7 +206,3 @@ class CatalogService:
             return False, "There is not enough stock."
         p["stock"] -= qty
         return True, "OK"
-
-
-
-

@@ -3,6 +3,7 @@ from services.catalog_service import CatalogService
 _CARTS = {}
 catalog = CatalogService()
 
+
 class CartService:
     def get_cart(self, user_email):
         return _CARTS.get(user_email, [])
